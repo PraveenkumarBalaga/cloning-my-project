@@ -192,7 +192,6 @@ const Mainprofile = ({ user }) => {
                 </div>
               </div>
 
-              
               <div className="avatarEditContainer">
                 <button onClick={() => setAvatarModalOpen(true)}>
                   Set Avatar
@@ -219,7 +218,6 @@ const Mainprofile = ({ user }) => {
         </div>
       </div>
 
-     
       <Modal
         isOpen={avatarModalOpen}
         onRequestClose={() => setAvatarModalOpen(false)}
