@@ -12,7 +12,6 @@
     flex: 0.4;
     border-right: 1px solid var(--twitter-background);
     min-width: fit-content;
-    overflow-y: scroll;
 }
 
 .profilePage::-webkit-scrollbar {
@@ -22,6 +21,6 @@
 
 .pageTitle {
     color: var(--twitter-color);
-    text-align: center;
-    font-size: 30px;
+    font-size: 24px;
+   text-align: center;
 }

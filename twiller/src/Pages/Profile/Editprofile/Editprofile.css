@@ -1,4 +1,4 @@
-/* .modal {
+.modal {
     background-color: white;
     padding: 10px;
     overflow-y: scroll;
@@ -6,6 +6,22 @@
   
   .modal::-webkit-scrollbar {
     display: none;
+  }
+  .Edit-profile-btn{
+    background-color: var(--twitter-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 32px;
+  margin-left: 8px;
+  }
+  .Edit-profile-btn:hover {
+    background-color: #e8f5fe;
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
   }
   
   .header {
@@ -148,14 +164,14 @@
   
   .last-section>.last-btn:hover {
     background-color: #b4b7b9
-  } */
+  }
 
 
   /* assignment 
   ........................................
   
   */
-   .modal {
+   /* .modal {
     background-color: white;
     padding: 10px;
     overflow-y: scroll;
@@ -306,7 +322,7 @@
   .last-section>.last-btn:hover {
     background-color: #b4b7b9
   } 
-  /* Avatar Selection Modal Styles */
+  
 .avatarSelectionModal {
   background-color: white;
   padding: 20px;
@@ -364,4 +380,4 @@
 }
 
 
-
+ */

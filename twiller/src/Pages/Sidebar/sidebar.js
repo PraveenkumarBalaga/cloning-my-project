@@ -30,7 +30,7 @@ const Sidebar = ({ handlelogout, user }) => {
   const navigate = useNavigate();
   const handleclick = (e) => {
     setanchorE1(e.currentTarget);
-    // console.log(e.currentTarget);
+     console.log(e.currentTarget);
   };
   const handleclose = () => {
     setanchorE1(null);
@@ -67,15 +67,18 @@ const Sidebar = ({ handlelogout, user }) => {
       <Button variant="outlined" className="sidebar__tweet" fullWidth>
         Tweet
       </Button>
+
       <div className="profile__info">
-        <Avatar
-          src={
-            loggedinuser[0]?.profileImage
-              ? loggedinuser[0]?.profileImage
-              : user && user.photoURL
-            //: "https://lh3.googleusercontent.com/a/ACg8ocLYRiEuaNHjPuRVe9s7EmDO5uBy61C3W8Wy7aRzH1PdRvkNmuk=s96-c"
-          }
-        />
+        <div className="avatar_section">
+          <Avatar
+            src={
+              loggedinuser[0]?.profileImage
+                ? loggedinuser[0].profileImage
+                : user && user.photoURL
+              //: "https://lh3.googleusercontent.com/a/ACg8ocLYRiEuaNHjPuRVe9s7EmDO5uBy61C3W8Wy7aRzH1PdRvkNmuk=s96-c"
+            }
+          />
+        </div>
         <div className="user__info">
           <h4>
             {loggedinuser[0]?.name
@@ -110,7 +113,6 @@ const Sidebar = ({ handlelogout, user }) => {
                 loggedinuser[0]?.profileImage
                   ? loggedinuser[0]?.profileImage
                   : user && user.photoURL
-                //: "https://lh3.googleusercontent.com/a/ACg8ocLYRiEuaNHjPuRVe9s7EmDO5uBy61C3W8Wy7aRzH1PdRvkNmuk=s96-c"
               }
             />
             <div className="user__info subUser__info">

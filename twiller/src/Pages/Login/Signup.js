@@ -101,7 +101,7 @@ const Signup = () => {
                 </button>
               </div>
             </form>
-            <hr />
+            <hr />     
             <div className="google-button">
               <GoogleButton
                 className="g-btn"
@@ -110,7 +110,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              Already have an account ?
+            &nbsp; &nbsp; &nbsp; Already have an account ?
               <Link
                 to="/login"
                 style={{

@@ -31,7 +31,7 @@ const Tweetbox = () => {
       )
       .then((res) => {
         setimageurl(res.data.data.display_url);
-         console.log(res.data.data.display_url);
+        console.log(res.data.data.display_url);
         setisloading(false);
       })
       .catch((e) => {
@@ -97,6 +97,7 @@ const Tweetbox = () => {
             required
           />
         </div>
+
         <div className="imageIcon__tweetButton">
           <label htmlFor="image" className="imageIcon ">
             {isloading ? (
@@ -117,6 +118,7 @@ const Tweetbox = () => {
             className="imageInput"
             onChange={handleuploadimage}
           />
+
           <Button className="tweetBox__tweetButton" type="submit">
             Tweets
           </Button>

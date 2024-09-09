@@ -3,7 +3,7 @@ import twitterimg from "../../image/twitter.jpeg";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleButton from "react-google-button";
 import { useNavigate, Link } from "react-router-dom";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import "./login.css";
 import { useUserAuth } from "../../context/UserAuthContext";
 // import { EmailAuthCredential } from "firebase/auth";
@@ -35,56 +35,60 @@ const Login = () => {
   };
   return (
     <>
-      <div className="login-container">
+       <div className="login-container">
         <div className="image-container">
-          <img src={twitterimg} className="image" alt="twitterimg" />
+          <img src={twitterimg} className="image" alt="twitterimage" />
         </div>
+
         <div className="form-container">
-          <div className="form-box">
-            <TwitterIcon style={{ color: "skyblue" }} />
+          <div className="">
+            <TwitterIcon className="Twittericon" style={{ color: "skyblue" }} />
             <h2 className="heading">Happening now</h2>
-            {error && <p>{error.message}</p>}
+            <div class="d-flex align-items-sm-center">
+              <h3 className="heading1">join twiller today</h3>
+            </div>
+            {error && <p className="errorMessage">{error}</p>}
             <form onSubmit={handlesubmit}>
               <input
-                type="email"
                 className="email"
-                placeholder="Email address"
+                type="email"
+                placeholder="Email Address"
                 onChange={(e) => setemail(e.target.value)}
               />
               <input
-                type="password"
                 className="password"
+                type="password"
                 placeholder="password"
                 onChange={(e) => setpassword(e.target.value)}
               />
               <div className="btn-login">
-                <Button type="submit" className="btn">
+                <button type="submit" className="btn">
                   Log In
-                </Button>
+                </button>
               </div>
             </form>
-            <hr />
-            <div>
+            <hr />     
+            <div className="google-button">
               <GoogleButton
                 className="g-btn"
                 type="light"
                 onClick={handleGoogleSignIn}
               />
             </div>
-          </div>
-          <div>
-            Don't have an account
-            <Link
-              to="/signup"
-              style={{
-                textDecoration: "none",
-                color: "var(--twitter-color)",
-                fontWeight: "600",
-                marginLeft: "5px",
-              }}
-            >
-              Signup
-            </Link>
+            <div>
+            &nbsp; &nbsp; &nbsp; Already have an account ?
+              <Link
+                to="/Signup"
+                style={{
+                  textDecoration: "none",
+                  color: "var(--twitter-color)",
+                  fontWeight: "600",
+                  marginLeft: "5px",
+                }}
+              >
+                Log In
+              </Link>
+            </div>
           </div>
         </div>
       </div>

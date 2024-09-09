@@ -25,14 +25,16 @@
 
 .tweetBox__imageInput {
   border: none;
-  padding: 5px 20px;
+  padding-left: 12px;
+}
+.imageIcon__tweetButton {
+  display: flex;
+  flex-direction: row; /* Aligns items horizontally */
+  justify-content: space-between; /* Creates space between elements */
+  align-items: center; /* Align items vertically centered */
+  padding: 10px 10px; /* Adds some vertical padding for better spacing */
 }
 
-.imageIcon_tweetButton {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .tweetBox__tweetButton {
   background-color: var(--twitter-color) !important;
