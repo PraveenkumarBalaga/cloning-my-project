@@ -1,7 +1,6 @@
-const { MongoClient } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
-
 const uri =
   "mongodb+srv://admin:admin@twiller.ovrvb.mongodb.net/?retryWrites=true&w=majority&appName=twiller";
 const port = 5000;
@@ -20,78 +19,64 @@ async function run() {
 
     // Register a new user
     app.post("/register", async (req, res) => {
-      try {
-        const user = req.body;
-        console.log("Registering user:", user);
-        const result = await usercollection.insertOne(user);
-        res.send(result);
-      } catch (error) {
-        console.error("Error registering user:", error);
-        res.status(500).send("Error registering user");
-      }
+      const user = req.body;
+      console.log(user);
+      const result = await usercollection.insertOne(user);
+      res.send(result);
     });
 
-    // Retrieve logged-in user
+    // Get logged-in user
     app.get("/loggedinuser", async (req, res) => {
-      try {
-        const email = req.query.email;
-        console.log("Fetching logged-in user with email:", email);
-        const result = await usercollection.find({ email: email }).toArray();
-        res.send(result);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        res.status(500).send("Error fetching user");
-      }
+      const email = req.query.email;
+      const user = await usercollection.find({ email: email }).toArray();
+      res.send(user);
     });
 
-    // Insert a post
-    app.post("/insertpost", async (req, res) => {
-      try {
-        const post = req.body;
-        console.log("Inserting post:", post);
-        const result = await postcollection.insertOne(post);
-        res.send(result);
-      } catch (error) {
-        console.error("Error inserting post:", error);
-        res.status(500).send("Error inserting post");
-      }
+    // Post new tweet
+    app.post("/post", async (req, res) => {
+      const post = req.body;
+      const result = await postcollection.insertOne(post);
+      res.send(result);
     });
 
-    // Retrieve posts for a specific user
+    // Get all posts
+    app.get("/post", async (req, res) => {
+      const post = (await postcollection.find().toArray()).reverse();
+      res.send(post);
+    });
+
+    // Get posts by a specific user
     app.get("/userpost", async (req, res) => {
-      try {
-        const email = req.query.email;
-        console.log("Fetching posts for user with email:", email);
-        const result = await postcollection.find({ email: email }).toArray();
-        res.send(result);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-        res.status(500).send("Error fetching posts");
-      }
+      const email = req.query.email;
+      const post = (await postcollection.find({ email: email }).toArray()).reverse();
+      res.send(post);
     });
 
-    // Update a user's profile image or avatar
+    // Update user profile (including avatars or profile images)
     app.patch("/userupdate/:email", async (req, res) => {
-      try {
-        const email = req.params.email;
-        const updatedProfile = req.body;
-        console.log(`Updating user profile for ${email}:`, updatedProfile);
-        const filter = { email: email };
-        const update = { $set: updatedProfile };
-        const result = await usercollection.updateOne(filter, update);
-        res.send(result);
-      } catch (error) {
-        console.error("Error updating user profile:", error);
-        res.status(500).send("Error updating user profile");
-      }
-    });
-  } finally {
+      const { email } = req.params;
+      const profileUpdates = req.body;  // Contains profileImage, avatar, or other fields
+      const options = { upsert: true };
+      const updatedoc = { $set: profileUpdates };
 
+      console.log("Updating user profile for:", email);
+      console.log("Profile Updates:", profileUpdates);
+
+      const result = await usercollection.updateOne({ email }, updatedoc, options);
+      res.send(result);
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 
-run().catch(console.error);
+run().catch(console.dir);
+
+// Default route
+app.get("/", (req, res) => {
+  res.send("Twiller is working");
+});
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Twiller clone is working on port ${port}`);
 });
