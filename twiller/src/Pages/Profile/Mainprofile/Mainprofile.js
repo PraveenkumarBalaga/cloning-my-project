@@ -21,7 +21,7 @@ const Mainprofile = ({ user }) => {
   const avatarOptions = ["bigHair", "bob", "bun", "curly", "dreads", "frida"];
 
   useEffect(() => {
-    fetch(`http://localhost:5000/userpost?email=${user?.email}`)
+    fetch(`https://cloning-my-project.onrender.com/userpost?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setpost(data);
@@ -44,7 +44,7 @@ const Mainprofile = ({ user }) => {
           email: user?.email,
           coverimage: url,
         };
-        fetch(`http://localhost:5000/userupdate/${user?.email}`, {
+        fetch(`https://cloning-my-project.onrender.com/userupdate/${user?.email}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",
@@ -111,7 +111,7 @@ const Mainprofile = ({ user }) => {
       email: user?.email,
       profileImage: avatarUrl,
     };
-    fetch(`http://localhost:5000/userupdate/${user?.email}`, {
+    fetch(`https://cloning-my-project.onrender.com/userupdate/${user?.email}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -8,7 +8,7 @@ const Feed = () => {
   const [post, setpost] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/post")
+    fetch("https://cloning-my-project.onrender.com/post")
       .then((res) => res.json())
       .then((data) => {
         setpost(data);
