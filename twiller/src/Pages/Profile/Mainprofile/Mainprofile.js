@@ -83,7 +83,7 @@ const Mainprofile = ({ user }) => {
         };
         setisloading(false);
         if (url) {
-          fetch(`http://localhost:5000/userupdate/${user?.email}`, {
+          fetch(`https://cloning-my-project.onrender.com/userupdate/${user?.email}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
